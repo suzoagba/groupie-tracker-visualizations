@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>groupie-tracker</title>
+        <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    </head>
+    <body id="main">
+        <div id="header">
+            <h1>groupie-tracker</h1>
+        </div>
+        <div id="searchAndFilters">
+            <h2 id="filtersH2" onclick="showFilters()">Filters</h2>
+            {{ template "filters" . }}
+        </div>
+        <br>
+        <div id="artists">
+            <h2>Artists</h2>
+            {{ template "artists" .Artists }}
+        </div>
+        <br>
+        <div id="selection">
+            <h2>Info</h2>
+            {{ template "artistInfo" .Artists }}
+        </div>
+    </body>
+</html>

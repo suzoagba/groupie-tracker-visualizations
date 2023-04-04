@@ -1,0 +1,49 @@
+{{ define "artistInfo"}}
+    <div id="library">
+        {{ if . }}
+            <div id="info">
+                {{ range $index, $value := . }}
+                    <div id="artist{{ $index }}" class="artistInfo2">
+                        <div class="nameAndCover info2">
+                            <img class="artistCover" src={{ .Image }} alt="Artist Image">
+                            <h2 class="artistName">{{ .Name }}</h2>
+                        </div>
+                        <div class="members info2">
+                            <h3>Member(s):</h3>
+                            <p>{{range .Members}}
+                                    {{.}}<br>
+                                {{end}}
+                            </p>
+                        </div>
+                        <div class="firsts info2">
+                            <div class="activeSince">
+                                <h3>Active since</h3>
+                                <p>{{.CreationDate}}</p>
+                            </div>
+                            <div class="firstAlbum">
+                                <h3>First album</h3>
+                                <p>{{.FirstAlbum}}</p>
+                            </div>
+                        </div>
+                        <div class="shows info2">
+                            <h3>List of shows:</h3>
+                            {{ range $key, $value := .LocationDates }}
+                                <p>{{ $key}}<br>
+                                    {{ range $date := $value}}
+                                        {{ $date}}<br>
+                                    {{end}}
+                                </p>
+                            {{end}}
+                        </div>
+                        <div id="map" class="info2">
+                            <h3>Map of shows:</h3>
+                            <a href="{{.LocationMap}}" target="_blank">
+                                <img src="{{.LocationMap}}" alt="Map showing locations"/>
+                            </a>
+                        </div>
+                    </div>
+                {{ end }}
+            </div>
+        {{ end }}
+    </div>
+{{ end }}

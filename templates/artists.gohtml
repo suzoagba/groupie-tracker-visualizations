@@ -1,0 +1,13 @@
+{{ define "artists"}}
+    <div id="artistNames">
+        {{ if . }}
+            {{ range $index, $value := . }}
+                <a href="#artist{{ $index }}" class="artistInfo" onclick="showInfo('artist{{ $index }}')">
+                    <h3 class="artistName">{{ .Name }}</h3>
+                </a>
+            {{ end }}
+        {{ else }}
+            <p>No artists to show</p>
+        {{ end }}
+    </div>
+{{ end }}

@@ -1,0 +1,91 @@
+{{ define "filters"}}
+    <div id="filters">
+        <form id="filtersForm">
+
+            <div class="filterOption">
+                <div class="search" id="search">
+                    <h3 class="filterType">Search:</h3>
+                    <input id="searchbar" type="text" name="search" placeholder="type to search" {{if .Filters.FormData.Search }} value="{{ .Filters.FormData.Search }}" {{ end }} list="character">
+                    <datalist id="character">
+                        {{ range $artist := .Search }}
+                            <option value={{$artist.Name}}>{{$artist.Name}} - Artist/Band</option>
+                            {{range $artist.Members}}
+                                <option value={{$artist.Name}}>{{.}} - Member ({{$artist.Name}})</option>
+                            {{end}}
+                            {{ range $key, $value := .LocationDates }}
+                                <option value={{$artist.Name}}>{{ $key}} - Location ({{$artist.Name}})</option>
+                            {{end}}
+                            <option value={{$artist.Name}}>{{.CreationDate}} - Creation Date ({{$artist.Name}})</option>
+                            <option value={{$artist.Name}}>{{.FirstAlbum}} - First Album ({{$artist.Name}})</option>
+                        {{end}}
+                    </datalist>
+                </div>
+            </div>
+
+            <div class="filterOption">
+                <h3 class="filterType">Creation date:</h3>
+
+                <div class="chooseDate">
+                    From
+                    <span id="creationDateFromNr" class="creationDate">{{ .Filters.CreationDateMin }}</span>
+                    <input type="range" id="creationDateFrom" name="creationDateFrom"
+                           min="{{ .Filters.CreationDateMin }}" max="{{ .Filters.CreationDateMax }}" {{ if .Filters.FormData.CreationDate.From }} value="{{ .Filters.FormData.CreationDate.From }}" {{ else }} value="{{ .Filters.CreationDateMin }}"{{ end }}>
+                </div>
+
+
+                <div class="chooseDate">
+                    &nbsp;&nbsp;&nbsp;&nbsp;To
+                    <span id="creationDateToNr" class="creationDate">{{ .Filters.CreationDateMax }}</span>
+                    <input type="range" id="creationDateTo" name="creationDateTo"
+                           min="{{ .Filters.CreationDateMin }}" max="{{ .Filters.CreationDateMax }}" {{ if .Filters.FormData.CreationDate.To }} value="{{ .Filters.FormData.CreationDate.To }}" {{ else }} value="{{ .Filters.CreationDateMax }}"{{ end }}>
+                </div>
+            </div>
+
+            <div class="filterOption">
+                <h3 class="filterType">First album:</h3>
+                From
+                <select name="firstAlbumDateFrom" id="firstAlbumDateFrom">
+                    {{ $firstAlbumFrom := .Filters.FormData.FirstAlbum.From }}
+                    {{ range .Filters.FirstAlbumDates }}
+                        <option value="{{ . }}"{{ if eq $firstAlbumFrom .}} selected{{ end }}>{{ . }}</option>
+                    {{ end }}
+                </select>
+                to
+                <select name="firstAlbumDateTo" id="firstAlbumDateTo">
+                    {{ $firstAlbumTo := .Filters.FormData.FirstAlbum.To }}
+                    {{ range .Filters.FirstAlbumDates }}
+                        <option value="{{ . }}"{{ if eq $firstAlbumTo .}} selected{{ end }}>{{ . }}</option>
+                    {{ end }}
+                </select>
+            </div>
+            <div class="filterOption">
+                <h3 class="filterType">Number of members:</h3>
+                <fieldset id="nrMembers">
+                    {{ $members := .Filters.FormData.CheckedMembers }}
+                    {{ range $filtersMember := .Filters.Members }}
+                        <input type="checkbox" id="{{ $filtersMember }}" name="numMembers" value="{{ $filtersMember }}"{{ range $member := $members }}{{ if eq $member $filtersMember }}checked{{ end }}{{ end }}>{{ $filtersMember }}
+                    {{ end }}
+                </fieldset>
+            </div>
+            <div class="filterOption">
+                <h3 class="filterType">Location of concerts:</h3>
+                <select name="locations" id="locations">
+                    {{ if .Filters.FormData.ConcertLocation }}
+                        {{ $cLocation := .Filters.FormData.ConcertLocation }}
+                         <option value=""></option>
+                        {{ range .Filters.Locations }}
+                            <option value="{{ . }}"{{ if eq $cLocation .}} selected{{ end }}>{{ . }}</option>
+                        {{ end }}
+                    {{ else }}
+                        <option hidden disabled selected value></option>
+                        {{ range .Filters.Locations }}
+                            <option value="{{ . }}">{{ . }}</option>
+                        {{ end }}
+                    {{ end }}
+                </select>
+            </div>
+            <button type="submit" value="Submit" id="submit" onclick="removeHash()">Filter</button>
+        </form>
+    </div>
+    <script src="/js/main.js"></script>
+{{ end }}

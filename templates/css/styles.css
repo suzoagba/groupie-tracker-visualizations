@@ -1,0 +1,200 @@
+:root {
+    --primary: #f72408;
+    --secondary: #30ff06d0;
+    --tertiary: #f7f7f7;
+    }
+    
+    body {
+    font-family: Arial, sans-serif;
+    background-color: var(--tertiary);
+    color: var(--primary);
+    width: 100%;
+    }
+    
+    #filters {
+    display: none;
+    }
+    
+    #searchAndFilters h2 {
+    cursor: pointer;
+    }
+    
+    #searchAndFilters, #artistNames {
+    background-color: var(--secondary);
+    border: 1px dotted var(--primary);
+    width: 90vw;
+    margin: auto;
+    border-radius: 5px;
+    padding: 10px;
+    }
+    
+    #library, #filters {
+    width: 90vw;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+    }
+    
+    #artistNames {
+    border: 1px dotted var(--primary);
+    padding: 10px;
+    margin: auto;
+    text-align: center;
+    }
+    
+    .artistInfo, #filtersH2 {
+    display: inline-block;
+    border: 1px solid var(--secondary);
+    margin: auto;
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    }
+    
+    .artistInfo2 {
+    border-radius: 5px;
+    border: 1px solid var(--primary);
+    background-color: var(--secondary);
+    width: 90vw;
+    margin: auto;
+    margin-bottom: 20px;
+    }
+    
+    .artistInfo2 p {
+    color: var(--primary);
+    }
+    
+    .artistInfo2 img {
+    border-radius: 15px;
+    }
+    
+    .info2 {
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px;
+    }
+    
+    .filterOption {
+    display: inline-block;
+    margin-bottom: 10px;
+    text-align: center;
+    vertical-align: top;
+    padding: 15px;
+    padding-bottom: 25px;
+    border-radius: 5px;
+    height: 100px;
+    min-width: 250px;
+    }
+    
+    #submit {
+    width: 80vw;
+    margin: auto;
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 25px;
+    padding: 5px;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: var(--primary);
+    color: var(--tertiary);
+    }
+    
+    .artistCover {
+    padding: 5px;
+    border-radius: 5px;
+    }
+    
+    .artistInfo, #submit, .filterOption {
+    color: var(--primary);
+    font-weight: bold;
+    border: 1px solid var(--secondary);
+    background-color: var(--tertiary);
+    }
+    
+    .artistInfo:hover, #submit:hover {
+    background-color: var(--secondary);
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    }
+    
+    input[type="range"] {
+    appearance: none;
+    background-color: var(--tertiary);
+    border: 1px solid var(--secondary);
+    border-radius: 5px;
+    color: var(--primary);
+    }
+    
+    input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    box-shadow: 1px 1px 1px #000000;
+    border: 1px solid #000000;
+    height: 15px;
+    width: 15px;
+    border-radius: 15px;
+    background: white;
+}
+
+#search {
+    width: 80vw !important;
+}
+
+#searchbar {
+    width: 50vw !important;
+}
+
+#error {
+    width: 100vw;
+    text-align: center;
+}
+
+#errorInfo {
+    margin: auto;
+}
+
+#errorNumber {
+    font-size: 30em;
+    margin: auto;
+}
+#errorText1 {
+    font-size: 3em;
+}
+#errorText2 {
+    font-size: 2em;
+}
+
+input, select, #nrMembers {
+    border-radius: 5px;
+}
+
+h3 {
+    font-size: large;
+}
+
+#selection {
+    display: none;
+}
+
+.artistInfo2 {
+    display: none;
+}
+
+.artistInfo2 {
+    opacity: 0.5;
+}
+
+.artistInfo2:target {
+    opacity: 2;
+    box-shadow: 10px 10px;
+}
+
+#map img {
+    height: 240px;
+    width: 360px;
+}
